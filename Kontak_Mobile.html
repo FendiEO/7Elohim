@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7Elohim Organizer & Planner</title>
+    <link rel="icon" href="foto/Logo_7Elohim.jpg" type="image/jpg">
+    <style>
+        /* Reset default browser styles */
+        body, ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Basic styles */
+        body {
+            font-family: Arial, sans-serif;
+            color: gold;
+            background: url('foto/background.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        .border-animation {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: -1;
+            animation: gradient 4s linear infinite;
+            border: 10px solid gold;
+        }
+
+        @keyframes gradient {
+            0% {
+                border-color: gold;
+            }
+            25% {
+                border-color: silver;
+            }
+            50% {
+                border-color: yellow;
+            }
+            75% {
+                border-color: blue;
+            }
+            100% {
+                border-color: gold;
+            }
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            z-index: 999;
+        }
+
+        .menu a {
+            text-decoration: rgb(178, 241, 5);
+            color: rgb(248, 9, 9);
+            transition: color 0.3s;
+        }
+
+        .menu a:hover {
+            color: rgb(250, 5, 5);
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(247, 1, 1, 0.918);
+        }
+
+        .menu-icon {
+            display: none;
+            cursor: pointer;
+        }
+
+        .menu {
+            list-style: none;
+            display: flex;
+        }
+
+        .menu li {
+            margin-right: 10px;
+            margin-bottom: 10px;
+            text-align: right;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: rgb(205, 240, 8);
+        }
+
+        .box-left-bottom {
+            position: absolute;
+            bottom: 30px;
+            left: 80px;
+            padding: 10px;
+            background-color: rgba(82, 82, 82, 0.5);
+            border: 2px solid #ee0808;
+            border-radius: 10px;
+            color: #000;
+            font-size: medium;
+            width: 290px;
+        }
+
+        section {
+            position: absolute;
+            bottom: 20px;
+            left: 2%;
+            transform: translateX(-50%);
+            padding: 70px;
+            font-size: medium;
+            color: #f80a0a;
+            text-align: left;
+        }
+
+        /* Responsiveness for screens with a max width of 768px */
+        @media screen and (max-width: 768px) {
+            .menu {
+                display: none;
+            }
+
+            .menu.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 40px;
+                right: 0;
+                background-color: transparent;
+                z-index: 2;
+            }
+
+            .menu li {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+
+            .menu-icon {
+                display: block;
+                cursor: pointer;
+                font-size: 30px;
+                padding: 20px;
+            }
+        }
+
+        .hover-effect a {
+            text-decoration: none;
+            color: #dbdf08;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .hover-effect a:hover {
+            color: rgb(248, 8, 8);
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(248, 5, 5, 0.5);
+        }
+
+        footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: transparent;
+            color: rgb(243, 2, 2);
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        /* Style the logo image and add a 3D effect when hovering */
+        .logo {
+            width: 50px;
+            margin-right: 20px;
+            padding: 15px;
+        }
+        
+        .logo:hover {
+            transform: scale(1.2);
+            transition: transform 0.5s;
+        }
+    </style>
+</head>
+<body>
+    <div class="border-animation"></div>
+    <header>
+        <img src="foto/Logo_7Elohim.jpg" alt="7Elohim Logo" class="logo">
+        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+        <ul class="menu">
+            <li><a href="Deafult.html">Beranda</a></li>
+            <li><a href="Gallery.html">Galerry</a></li>
+            <li><a href="Venue&Decoration.html">Venue & Decoration</a></li>
+            <li><a href="Testimoni.html">Testimoni</a></li>
+            <li><a href="kontak.html">Kontak</a></li>
+        </ul>
+    </header>
+
+    <section>
+        <div class="box-left-bottom">
+            <p class="hover-effect">
+                <a href="https://wa.me/6283147433700">
+                    <i class="fab fa-whatsapp"></i> WA: +6283147433700<br>
+                </a>
+                <a href="https://wa.me/6283147433700">
+                    <i class="fas fa-envelope"></i> Email: Seven.7Elohim93@gmail.com<br>
+                </a>
+                <a href="https://Facebook.com/7ELOHIMxEO">
+                    <i class="fab fa-facebook"></i> Facebook: 7ELOHIMxEO<br>
+                </a>
+                <a href="https://www.instagram.com/7elohim93">
+                    <i class="fab fa-instagram"></i> Instagram: 7elohim9
+                </a>
+            </p>
+        </div>
+    </section>    
+
+    <footer>
+        <p>&copy; Hak Cipta By. Fendi EO 2023-2024</p>
+    </footer>
+
+    <script></script>
+</body>
+</html>

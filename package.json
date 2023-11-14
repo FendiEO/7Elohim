@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "@hint/configuration-web-recommended": "^8.2.23",
+    "hint": "^7.1.10"
+  },
+  "scripts": {
+    "webhint": "hint"
+  }
+}

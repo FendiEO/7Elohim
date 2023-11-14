@@ -1,0 +1,386 @@
+/* Reset default browser styles */
+body, ul {
+    margin: 0;
+    padding: 0;
+}
+
+/* Basic styles */
+body {
+    font-family: Arial, sans-serif;
+    color: gold;
+    background-color: rgb(69, 24, 231);
+    background-size: cover;
+    margin-top: 70px; /* Tambahkan margin-top untuk memberikan ruang antara header dan konten */
+    margin-bottom: 30px; /* Tambahkan margin-bottom untuk memberikan ruang antara konten dan footer */
+}
+
+/* Style the logo image and add a 3D effect when hovering over the logo */
+@keyframes scaleAnimation {
+    0% {
+        transform: scale(1); /* Ukuran awal */
+    }
+    50% {
+        transform: scale(1.3); /* Ukuran maksimum */
+    }
+    100% {
+        transform: scale(1); /* Kembali ke ukuran awal */
+    }
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    margin-left: 20px;
+    margin-top: 20px; 
+    animation: scaleAnimation 2s infinite; /* Ubah durasi atau properti animasi sesuai kebutuhan Anda */
+}
+
+.border-animation {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    animation: gradient 3s linear infinite;
+    border: 10px solid gold;
+    border-radius: 10px;
+}
+
+@keyframes gradient {
+    0% {
+        border-color: gold;
+    }
+    25% {
+        border-color: silver;
+    }
+    50% {
+        border-color: yellow;
+    }
+    75% {
+        border-color: blue;
+    }
+    100% {
+        border-color: gold;
+    }
+}
+
+.header {
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+    margin-bottom: 20px; /* Tambahkan margin-bottom untuk memberikan ruang antara header dan konten */
+}
+
+/* Style the logo image and add a 3D effect when hovering over the logo */
+@keyframes scaleAnimation {
+    0% {
+        transform: scale(1); /* Ukuran awal */
+    }
+    50% {
+        transform: scale(1.3); /* Ukuran maksimum */
+    }
+    100% {
+        transform: scale(1); /* Kembali ke ukuran awal */
+    }
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    margin-left: 20px;
+    margin-top: 20px;
+    animation: scaleAnimation 2s infinite; /* Ubah durasi atau properti animasi sesuai kebutuhan Anda */
+}
+
+.menu.active {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 70px;
+    right: 0;
+} 
+
+.menu {
+    list-style: none;
+    display: -ms-flexbox;
+    background-color: rgb(54, 106, 219);
+    height: 96.4%;
+    position: absolute;
+    top: 0;
+    right: -101%;
+    transition: right 1s;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    border-radius: 10px;
+    align-items: center;
+}
+
+.menu.active {
+    top: 11px;
+    right: 11px;
+    font-size: 16px;
+    font-family: "lato";
+    font-weight: bold; 
+    text-align: center;
+}
+
+.menu a:hover {
+    color: var(--hover-color);
+    transform: scale(1.05);
+    box-shadow: 0 0 10px var(--shadow-color);
+}
+
+.hover-effect a:hover {
+    color: var(--hover-color);
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(248, 5, 5, 0.5);
+}
+
+.menu li {
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 0;
+    margin-top: 20px;
+    transition: box-shadow 0.1s ease; /* Animasi efek menojol */
+}
+
+.menu li:hover {
+    box-shadow: 0 0 10px rgb(255, 0, 0); /* Efek menojol saat kursor di atasnya */
+}
+
+.menu-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    position: fixed;
+    top: 25px;
+    right: 20px;
+}
+
+.menu-icon i,
+.menu-icon span {
+    font-size: 16px;
+    animation: scaleAnimation 2s infinite; /* Ubah durasi atau properti animasi sesuai kebutuhan Anda */
+}
+
+.menu-icon span {
+    margin-top: 3px;
+    margin-right: 5px;
+    font-family: "lato";
+}
+
+.menu-icon:hover {
+    cursor: pointer;
+}
+
+.menu a:hover {
+    color: rgb(243, 16, 16);
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(250, 246, 3, 0.856);
+}
+
+@keyframes gradient {
+    0% {
+        border-color: rgb(238, 255, 0);
+    }
+    50% {
+        border-color: rgb(216, 210, 151);
+    }
+    100% {
+        border-color: rgb(255, 238, 0);
+    }
+}
+
+.custom-controls {
+    display: inline-block;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    width: 23.5%; /* Sesuaikan lebar bingkai sesuai kebutuhan */
+    height: 15%;
+    margin-left: 16px; /* Untuk menengahkan bingkai di tengah halaman */
+    margin-right: -18px;
+    border: 5px solid #f7d304; /* Warna dan ketebalan border bingkai */
+    padding: 0; /* Ruang di dalam bingkai */
+    border-radius: 10px; /* Membuat sudut bingkai menjadi melengkung */
+    overflow: hidden; /* Untuk menyembunyikan bagian video yang mungkin keluar dari bingkai */
+    animation: gradient 1s linear infinite;
+}
+
+/* CSS untuk mengatur video */
+video {
+    width: 100%; /* Agar video mengisi seluruh lebar bingkai */
+    height: auto; /* Agar video menyesuaikan tinggi secara proporsional */
+    display: block; /* Agar video dapat diatur margin secara otomatis */
+}
+
+.custom-controls h1 {
+    text-align: center;
+    font-size: 15px;
+    color: gold;
+    margin-bottom: 0;
+    font-family: "lato";
+}
+
+footer {
+    position: relative;
+    bottom: 10px;
+    top: 30px;
+    width: 100%;
+    background-color: transparent;
+    color: rgb(231, 38, 24);
+    text-align: center;
+    padding-bottom: 5px;
+    font-family: "lato";
+    font-size: 18px;
+    z-index: -1;
+    margin-top: 20px; /* Tambahkan margin-top untuk memberikan ruang antara konten dan footer */
+    margin-bottom: 10px; /* Tambahkan margin-bottom untuk memberikan ruang di bawah footer */
+}
+
+.digital-clock {
+    position: fixed;
+    bottom: 10px ;
+    left: 10px;
+    background-color: rgba(248, 6, 6, 0.897);
+    color: rgb(241, 245, 10);
+    padding: 5px 5px;
+    border-radius: 5px;
+    font-size: 23px;
+    text-align: center;
+    white-space: wrap;
+    font-family: "lato";
+}
+
+/* Responsiveness for screens with a max width of 768px */
+@media screen and (max-width: 768px) {
+    .menu {
+        display: none;
+    }
+
+    .menu.active {
+        top: 11px;
+        right: 11px;
+        font-size: 16px;
+        font-family: lato;
+        font-weight: bold; 
+        text-align: center;
+    }
+
+    .menu li {
+        margin-right: 20px;
+        margin-bottom: 5px;
+    }
+
+    .menu-icon {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        position: fixed;
+        top: 20px;
+        right: 15px;
+    }
+
+    .menu-icon i,
+    .menu-icon span {
+        font-size: 16px;
+    }
+
+    .menu-icon span {
+        margin-top: 3px;
+        margin-right: 5px;
+        font-family: "lato";
+    }
+
+    .menu-icon:hover {
+        cursor: pointer;
+    }
+
+    .menu a:hover {
+        color: rgb(243, 16, 16);
+        transform: scale(1.05);
+        box-shadow: 0 0 10px rgba(250, 246, 3, 0.856);
+    }
+
+    .custom-controls {
+        display: inline-block;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: transparent;
+        width: 80%; /* Sesuaikan lebar bingkai sesuai kebutuhan */
+        height: auto;
+        margin-left: 40px; /* Untuk menengahkan bingkai di tengah halaman */
+        margin-right: 40px;
+        border: 5px solid #f7d304; /* Warna dan ketebalan border bingkai */
+        padding: 0; /* Ruang di dalam bingkai */
+        border-radius: 10px; /* Membuat sudut bingkai menjadi melengkung */
+        overflow: hidden; /* Untuk menyembunyikan bagian video yang mungkin keluar dari bingkai */
+        animation: gradient 1s linear infinite;
+    }
+
+         /* CSS untuk mengatur video */
+    video {
+        width: 100%; /* Agar video mengisi seluruh lebar bingkai */
+        height: 40%; /* Agar video menyesuaikan tinggi secara proporsional */
+        display: block; /* Agar video dapat diatur margin secara otomatis */
+      }
+    
+    .custom-controls h1 {
+        text-align: center;
+        font-size: 15px;
+        color: gold;
+        margin: 0;
+        font-family: "lato";
+    }
+    
+    .hover-effect a {
+        text-decoration: none;
+        color: #dbdf08;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .hover-effect a:hover {
+        color: rgb(248, 8, 8);
+        transform: scale(1.05);
+        box-shadow: 0 0 10px rgba(248, 5, 5, 0.5);
+    }     
+    
+    footer {
+        position: relative;
+        bottom: 10px;
+        top: 40px;
+        width: 100%;
+        background-color: transparent;
+        color: rgb(231, 38, 24);
+        text-align: center;
+        padding-top: -20px;
+        padding-bottom: 5px;
+        font-family: "lato";
+        font-size: 15px;
+        z-index: -1;
+    }
+
+    .digital-clock {
+        position: fixed;
+        bottom: 10px;
+        left: 10px;
+        background-color: rgba(248, 6, 6, 0.897);
+        color: rgb(241, 245, 10);
+        padding: 5px 5px;
+        border-radius: 5px;
+        font-size: 12px;
+        min-width: 25px;
+        text-align: center;
+        white-space: nowrap;
+        font-family: "lato";
+    }
+}

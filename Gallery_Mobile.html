@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7Elohim Organizer & Planner</title>
+    <link rel="icon" href="foto/Logo_7Elohim.jpg" type="image/jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Reset default browser styles */
+        body,
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Basic styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(16, 174, 236);
+            color: gold;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+
+        .border-animation {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: -1;
+            animation: gradient 4s linear infinite;
+            border: 10px solid gold;
+        }
+
+        @keyframes gradient {
+            0% {
+                border-color: gold;
+            }
+            25% {
+                border-color: silver;
+            }
+            50% {
+                border-color: yellow;
+            }
+            75% {
+                border-color: blue;
+            }
+            100% {
+                border-color: gold;
+            }
+        }
+
+        .menu.active {
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            top: 70px;
+            right: 0;
+        }
+
+        .menu {
+            list-style: none;
+            display: flex;
+            background-color: rgba(6, 196, 243, 0.925);
+            position: absolute;
+            top: 0;
+            right: -100%;
+            transition: right 0.3s;
+            flex-direction: column;
+            z-index: 1;
+            padding: 2px;
+        }
+
+        .menu.active {
+            top: 55px;
+            right: 10px;
+            font-size: 14px;
+            text-align: right;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: gold;
+            transition: color 0.3s;
+        }
+
+        .menu li {
+            margin-right: 0;
+            margin-bottom: 10px;
+        }
+
+        .menu a:hover {
+            color: rgb(243, 16, 16);
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(252, 53, 53, 0.5);
+        }
+
+        /* Style the header */
+        .header {
+            position: fixed;
+            top: 0;
+            color: rgb(253, 229, 9);
+            padding: 10px 0;
+            width: 100%;
+            z-index: 999;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Style the logo image and add a 3D effect when hovering over the logo */
+        .logo {
+            width: 40px;
+            height: 40px;
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .logo:hover {
+            transform: scale(1.2);
+            transition: transform 0.5s;
+        }
+
+        /* Style the menu icon */
+        .menu-icon {
+            font-size: 30px;
+            cursor: pointer;
+            position: relative;
+            top: 0;
+            right: 20px;
+            z-index: 999;
+        }
+
+        .menu-icon:hover {
+            cursor: pointer;
+        }
+
+        /* Style the menu */
+        .menu {
+            list-style: none;
+            display: flex;
+            position: absolute;
+            top: 0;
+            right: -100%;
+            transition: right 0.3s;
+            flex-direction: column;
+            background-color: rgba(6, 196, 243, 0.925);
+            z-index: 1;
+            padding: 2px;
+        }
+
+        .menu.active {
+            top: 55px;
+            right: 10px;
+            font-size: 14px;
+            text-align: right;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: gold;
+            transition: color 0.3s;
+        }
+
+        .menu li {
+            margin-right: 0;
+            margin-bottom: 10px;
+        }
+
+        .menu a:hover {
+            color: rgb(243, 16, 16);
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(252, 53, 53, 0.5);
+        }
+
+        .blink-container {
+            margin: 70px auto 70px;
+            text-align: center;
+            z-index: 999;
+        }
+
+        .blink {
+            display: inline-block;
+            animation: blink 2s infinite alternate;
+            border: 3.5px solid #ffd700;
+            padding: 7.5px;
+            text-align: center;
+            z-index: 999;
+            cursor: pointer;
+        }
+
+        @keyframes blink {
+            0% {
+                border: 4px solid gold;
+            }
+            20% {
+                border: 4px solid #f8fc06;
+            }
+            25% {
+                border: 4px solid #f8c808;
+            }
+            30% {
+                border: 4px solid gold;
+            }
+        }
+
+        h2 {
+            color: gold;
+            font-size: 16px;
+        }
+
+        .container {
+            position: absolute;
+            top: 60px;
+            left: 35px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            padding: 5px;
+            justify-content: flex-start;
+        }
+
+        /* Style the footer */
+        footer {
+            background-color: transparent;
+            color: gold;
+            text-align: center;
+            padding: 0;
+            width: 100%;
+            height: 20%;
+            position: relative;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        /* Responsiveness for screens with a max width of 768px */
+        @media screen and (max-width: 768px) {
+            .menu {
+                display: none;
+            }
+
+            .menu.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                background-color: transparent;
+                z-index: 2;
+            }
+
+            .menu li {
+                margin-right: 10px;
+                margin-bottom: 10px;
+                text-align: right;
+            }
+
+            .menu-icon {
+                display: block;
+                cursor: pointer;
+                font-size: 30px;
+                padding: 10px;
+                position: absolute;
+                top: 10px;
+                right: 10px;
+            }
+
+            .hover-effect a {
+                text-decoration: none;
+                color: #dbdf08;
+                transition: transform 0.3s, box-shadow 0.3s;
+            }
+
+            .hover-effect a:hover {
+                color: rgb(248, 8, 8);
+                transform: scale(1.05);
+                box-shadow: 0 0 10px rgba(248, 5, 5, 0.5);
+            }
+        }
+
+        .digital-clock {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            background-color: rgba(248, 6, 6, 0.897);
+            color: rgb(241, 245, 10);
+            padding: 5px 5px;
+            border-radius: 5px;
+            font-size: 20px;
+            min-width: 100px;
+            text-align: center;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="border-animation"></div>
+    <header class="header">
+        <img src="foto/Logo_7Elohim.jpg" alt="7Elohim Logo" class="logo">
+        <div class="menu-icon" id="menu-icon" onclick="toggleMenu()">
+            <i class="fas fa-home"></i>
+        </div>
+        <ul class="menu" id="menu">
+            <li><a href="Default_Desktop.html"><i class="fas fa-home"></i> Beranda</a></li>
+            <li><a href="Gallery_Desktop.html"><i class="fas fa-images"></i> Gallery</a></li>
+            <li><a href="Venue&Decoration_Desktop.html"><i class="fas fa-building"></i> Venue & Decoration</a></li>
+            <li><a href="Testimoni_Desktop.html"><i class="fas fa-comment"></i> Testimoni</a></li>
+            <li><a href="Kontak_Desktop.html"><i class="fas fa-envelope"></i> Kontak</a></li>
+        </ul>
+    </header>
+        <div class="blink-container">
+            <div class="blink">
+                <h2>Fave Hotel LTC Glodok</h2>
+                <img src="foto/Fave Hotel LTC Glodok_0.jpg" alt="Fave Hotel LTC Glodok_0" style="width: 300px; height: 150px;" onclick="openFullScreen(this)">
+            </div>
+            <div class="blink">
+                <h2>Fave Hotel LTC Glodok</h2>
+                <img src="foto/Fave Hotel LTC Glodok_1.jpg" alt="Fave Hotel LTC Glodok_1" style="width: 300px; height: 150px;" onclick="openFullScreen(this)">
+            </div>
+            <div class="blink">
+                <h2>Fave Hotel LTC Glodok</h2>
+                <img src="foto/Fave Hotel LTC Glodok_2.jpg" alt="Fave Hotel LTC Glodok_2" style="width: 300px; height: 150px;" onclick="openFullScreen(this)">
+            </div>
+            <div class="blink">
+                <h2>Fave Hotel LTC Glodok</h2>
+                <img src="foto/Fave Hotel LTC Glodok_3.jpg" alt="Fave Hotel LTC Glodok_3" style="width: 300px; height: 150px;" onclick="openFullScreen(this)">
+            </div>
+            <div class="blink">
+                <h2>Fave Hotel LTC Glodok</h2>
+                <img src="foto/Fave Hotel LTC Glodok_4.jpg" alt="Fave Hotel LTC Glodok_4" style="width: 300px; height: 150px;" onclick="openFullScreen(this)">
+            </div>
+            <div class="blink">
+                <h2>Fave Hotel LTC Glodok</h2>
+                <img src="foto/Fave Hotel LTC Glodok_5.jpg" alt="Fave Hotel LTC Glodok_5" style="width: 300px; height: 150px;" onclick="openFullScreen(this)">
+            </div>
+            <div class="blink">
+                <h2>Fave Hotel LTC Glodok</h2>
+                <img src="foto/Fave Hotel LTC Glodok_6.jpg" alt="Fave Hotel LTC Glodok_6" style="width: 300px; height: 150px;" onclick="openFullScreen(this)">
+            </div>
+            <div class="blink">
+                <h2>Fave Hotel LTC Glodok</h2>
+                <img src="foto/Fave Hotel LTC Glodok_7.jpg" alt="Fave Hotel LTC Glodok_7" style="width: 300px; height: 150px;" onclick="openFullScreen(this)">
+            </div>
+            <div class="blink">
+                <h2>Fave Hotel LTC Glodok</h2>
+                <img src="foto/Fave Hotel LTC Glodok_8.jpg" alt="Fave Hotel LTC Glodok_8" style="width: 300px; height: 150px;" onclick="openFullScreen(this)">
+            </div>
+            <div class="blink">
+                <h2>Hotel Ibis Style</h2>
+                <img src="foto/Hotel Ibis Style_0.jpg" alt="Hotel Ibis Style_0" style="width: 300px; height: 150px;" onclick="openFullScreen(this)">
+            </div>
+            <div class="blink">
+                <h2>Hotel Ibis Style</h2>
+                <img src="foto/Hotel Ibis Style_1.jpg" alt="Hotel Ibis Style_1" style="width: 300px; height: 150px;" onclick="openFullScreen(this)">
+            </div>
+            <div class="blink">
+                <h2>Hotel Ibis Style</h2>
+                <img src="foto/Hotel Ibis Style_2.jpg" alt="Hotel Ibis Style_2" style="width: 300px; height: 150px;" onclick="openFullScreen(this)">
+            </div>
+            <div class="blink">
+                <h2>Hotel Luminor Pecenongan</h2>
+                <img src="foto/Hotel Luminor_0.jpg" alt="Hotel Luminor_0" style="width: 300px; height: 150px;" onclick="openFullScreen(this)">
+            </div>
+            <div class="blink">
+                <h2>Hotel Luminor Pecenongan</h2>
+                <img src="Foto/Hotel Luminor_1.jpg" alt="Hotel Luminor_1" style="width: 300px; height: 150px;" onclick="openFullScreen(this)">
+            </div>
+            <div class="blink">
+                <h2>Hotel Luminor Pecenongan</h2>
+                <img src="foto/Hotel Luminor_2.jpg" alt="Hotel Luminor_2" style="width: 300px; height: 150px;" onclick="openFullScreen(this)">
+            </div>
+            <div class="blink">
+                <h2>Hotel Luminor Pecenongan</h2>
+                <img src="foto/Hotel Luminor_3.jpg" alt="Hotel Luminor_3" style="width: 300px; height: 150px;" onclick="openFullScreen(this)">
+            </div>
+            <div class="blink">
+                <h2>Hotel Luminor Pecenongan</h2>
+                <img src="foto/Hotel Luminor_4.jpg" alt="Hotel Luminor_4" style="width: 300px; height: 150px;" onclick="openFullScreen(this)">
+            </div>
+            <div class="blink">
+                <h2>MENARA TOP FOOD BSD</h2>
+                <img src="foto/MENARA TOP FOOD_0.jpg" alt="MENARA TOP FOOD_0" style="width: 300px; height: 150px;" onclick="openFullScreen(this)">
+            </div>
+            <div class="blink">
+                <h2>MENARA TOP FOOD BSD</h2>
+                <img src="foto/MENARA TOP FOOD_1.jpg" alt="MENARA TOP FOOD_1" style="width: 300px; height: 150px;" onclick="openFullScreen(this)">
+            </div>
+            <div class="blink">
+                <h2>MENARA TOP FOOD BSD</h2>
+                <img src="foto/MENARA TOP FOOD_2.jpg" alt="MENARA TOP FOOD_2" style="width: 300px; height: 150px;" onclick="openFullScreen(this)">
+            </div>
+            <div class="blink">
+                <h2>MENARA TOP FOOD BSD</h2>
+                <img src="foto/MENARA TOP FOOD_3.jpg" alt="MENARA TOP FOOD_3" style="width: 300px; height: 150px;" onclick="openFullScreen(this)">
+            </div>
+            <div class="blink">
+                <h2>MENARA TOP FOOD BSD</h2>
+                <img src="foto/MENARA TOP FOOD_4.jpg" alt="MENARA TOP FOOD_4" style="width: 300px; height: 150px;" onclick="openFullScreen(this)">
+            </div>
+            <div class="blink">
+                <h2>MENARA TOP FOOD BSD</h2>
+                <img src="foto/MENARA TOP FOOD_5.jpg" alt="MENARA TOP FOOD_5" style="width: 300px; height: 150px;" onclick="openFullScreen(this)">
+            </div>
+            <div class="blink">
+                <h2>Mini Gallery Fave Hotel</h2>
+                <img src="foto/Mini Gallery Fave Hotel_0.jpg" alt="Mini Gallery Fave Hotel_0" style="width: 300px; height: 150px;" onclick="openFullScreen(this)">
+            </div>
+            <div class="blink">
+                <h2>Mini Gallery Fave Hotel</h2>
+                <img src="foto/Mini Gallery Fave Hotel_1.jpg" alt="Mini Gallery Fave Hotel_1" style="width: 300px; height: 150px;" onclick="openFullScreen(this)">
+            </div>
+            <div class="blink">
+                <h2>MIni Gallery Hotel Ibis Style</h2>
+                <img src="foto/MIni Gallery Hotel Ibis Style.jpg" alt="MIni Gallery Hotel Ibis Style" style="width: 300px; height: 150px;" onclick="openFullScreen(this)">
+            </div>
+            <div class="blink">
+                <h2>Mini Gallery Hotel Luminor</h2>
+                <img src="foto/Mini Gallery Hotel Luminor.jpg" alt="Mini Gallery Hotel Luminor" style="width: 300px; height: 150px;" onclick="openFullScreen(this)">
+            </div>
+            <div class="blink">
+                <h2>Mini Gallery Pemberkatan_0</h2>
+                <img src="foto/Mini Gallery Pemberkatan_0.jpg" alt="Mini Gallery Pemberkatan_0" style="width: 300px; height: 150px;" onclick="openFullScreen(this)">
+            </div>
+            <div class="blink">
+                <h2>Mini Gallery Pemberkatan</h2>
+                <img src="foto/Mini Gallery Pemberkatan_1.jpg" alt="Mini Gallery Pemberkatan_1" style="width: 300px; height: 150px;" onclick="openFullScreen(this)">
+            </div>
+            <div class="blink">
+                <h2>Round Table</h2>
+                <img src="foto/Round Table.jpg" alt="Round Table" style="width: 300px; height: 150px;" onclick="openFullScreen(this)">
+            </div>
+            <div class="blink">
+                <h2>Wedding cake 3 Tingkat by Libra cake</h2>
+                <img src="foto/Wedding cake 3 Tingkat by Libra cake.jpg" alt="Wedding cake 3 Tingkat by Libra cake" style="width: 300px; height: 150px;" onclick="openFullScreen(this)">
+            </div>
+            <div class="blink">
+                <h2>Wedding cake 5 Tingkat by Libra cake</h2>
+                <img src="foto/Wedding cake 5 Tingkat by Libra cake.jpg" alt="Wedding cake 5 Tingkat by Libra cake" style="width: 300px; height: 150px;" onclick="openFullScreen(this)">
+            </div>
+        </div>  
+        <div class="fullscreen" id="fullscreen" onclick="closeFullscreen()">
+            <img id="fullscreen-image" onclick="closeFullscreen()">
+        </div>
+        <footer>
+            <p>@ Hak Cipta Oleh Fendi EO</p>
+        </footer>    
+        <script src="script.js"></script>
+    </body>
+    </html>

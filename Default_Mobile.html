@@ -1,0 +1,243 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>7Elohim Organizer & Planner</title>
+        <link rel="icon" href="foto/Logo_7Elohim.jpg" type="image/jpg">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <style>
+            /* Reset default browser styles */
+            body, ul {
+                margin: 0;
+                padding: 0;
+            }
+
+            /* Basic styles */
+            body {
+                font-family: Arial, sans-serif;
+                background-color: rgb(16, 174, 236);
+                color: gold;
+                text-align: center;
+                margin: 0;
+                padding: 0;
+                position: relative;
+            }
+
+            .border-animation {
+                position: fixed;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                z-index: 0;
+                animation: gradient 4s linear infinite;
+                border: 10px solid gold;
+            }
+
+            @keyframes gradient {
+                0% {
+                    border-color: gold;
+                }
+                25% {
+                    border-color: silver;
+                }
+                50% {
+                    border-color: yellow;
+                }
+                75% {
+                    border-color: blue;
+                }
+                100% {
+                    border-color: gold;
+                }
+            }
+
+            /* CSS untuk mengatur posisi elemen-elemen */
+            .header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                position: fixed;
+                width: 100%;
+                background-color: transparent;
+                z-index: 999;
+            }
+
+            .menu.active {
+                display: flex;
+                flex-direction: column;
+                position: fixed;
+                top: 70px;
+                right: 0;
+            } 
+
+            .menu {
+                list-style: none;
+                display: flex;
+                background-color: rgba(6, 196, 243, 0.925);
+                position: absolute;
+                top: 0;
+                right: -100%;
+                transition: right 0.3s;
+                flex-direction: column;
+                z-index: 1;
+            }
+
+            .menu.active {
+                top: 55px;
+                right: 10px;
+                font-size: 14px;
+                text-align: right;
+            }
+
+            .menu a {
+                text-decoration: rgb(252, 3, 15);
+                color: gold;
+                transition: color 0.3s;
+            }
+
+            .menu li {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+
+            .menu-icon {
+                font-size: 20px;
+                cursor: pointer;
+                position: relative; /* Ubah posisi menjadi relatif */
+                top: 0; /* Setel top kembali ke 0 */
+                right: 20px; /* Tetap di sisi atas kanan */
+                z-index: 999;
+            }
+
+            .menu-icon:hover {
+                cursor: pointer;
+            }
+
+            .menu a:hover {
+                color: rgb(243, 16, 16);
+                transform: scale(1.05);
+                box-shadow: 0 0 10px rgba(252, 53, 53, 0.5);
+            }
+
+            /* Style the logo image and add a 3D effect when hovering over the logo */
+            .logo {
+                padding: 10px; /* Sesuaikan padding untuk memisahkan logo dari tepi */
+                width: 35px;
+                height: 35px;
+                margin: 10px;
+            }
+
+            .logo:hover {
+                transform: scale(1.2);
+                transition: transform 0.5s;
+            }
+
+            .section-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding-top: 10px; /* Jarak antara gambar dan Header */
+                position: relative;
+                overflow: hidden;
+            }
+
+            /* CSS untuk mengatur gambar dan bingkai */
+            .small-image-container {
+                width: 250px; /* Sesuaikan lebar gambar container */
+                height: 350px; /* Sesuaikan tinggi gambar container */
+                margin: 5px;
+                background-color: silver; /* Warna bingkai */
+                background-image: url('foto/wedding.jpg');
+                background-size: cover; /* Menutupi seluruh area bingkai dengan gambar */
+                background-position: center; /* Posisi gambar di tengah bingkai */
+                background-repeat: no-repeat; /* Menghindari pengulangan gambar di bingkai */
+                position: relative;
+            }
+
+            .small-image {
+                width: 100%; /* Gambar akan mengikuti lebar container */
+                height: 100%; /* Gambar akan mengikuti tinggi container */
+                overflow: hidden;
+            }
+
+            .text-container {
+                text-align: center;
+                color: gold;
+                font-size: 10px;
+                margin-top: 10px; /* Atur jarak antara teks dan footer */
+            }
+
+            .digital-clock {
+                position: fixed;
+                bottom: 10px;
+                left: 10px;
+                background-color: rgba(248, 6, 6, 0.897);
+                color: rgb(241, 245, 10);
+                padding: 3px 3px;
+                border-radius: 5px;
+                font-size: 12px;
+                min-width: 10px;
+                text-align: center;
+                white-space: nowrap;
+            }
+
+            /* CSS untuk footer */
+            footer {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                background-color: transparent;
+                color: gold;
+                margin-bottom: -60px;
+                padding: 0 0;
+                text-align: center;
+                z-index: 999;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="border-animation"></div>
+        <header class="header">
+            <img src="foto/Logo_7Elohim.jpg" alt="7Elohim Logo" class="logo">
+            <div class="menu-icon" id="menu-icon" onclick="toggleMenu()">
+                <i class="fas fa-home"></i>
+            </div>
+            <ul class="menu" id="menu">
+                <li><a href="Default_Desktop.html"><i class="fas fa-home"></i> Beranda</a></li>
+                <li><a href="Gallery_Desktop.html"><i class="fas fa-images"></i> Gallery</a></li>
+                <li><a href="Venue&Decoration_Desktop.html"><i class="fas fa-building"></i> Venue & Decoration</a></li>
+                <li><a href="Testimoni_Desktop.html"><i class="fas fa-comment"></i> Testimoni</a></li>
+                <li><a href="Kontak_Desktop.html"><i class="fas fa-envelope"></i> Kontak</a></li>
+            </ul>
+        </header>
+        <section>
+            <div class="section-container">
+                <div class="small-image-container">
+                    <img class="small-image" src="foto/Bingkai.jpg" alt="Wedding">
+                </div>
+                <div class="text-container">
+                    <h1>Selamat datang di 7Elohim Organizer & Planner<br>
+                        Jelajahi Dunia Wedding<br>
+                        Kami akan membantu melancarkan acara liputan pagi hingga resepsi Pernikahan<br>
+                        Sambut Kesempatan Baru Bersama Kami<br>
+                        Mari Temukan kecocokan venue dan Package anda Bersama Kami<br>
+                        Kami Menawarkan Berbagai paket pernikahan untuk Anda<br>
+                        Dapatkan Ide, Tips, dan Solusi di Sini<br>
+                        Kami Hadir Untuk Memudahkan dalam perencanaan dekorasi susunan acara Anda<br>
+                    </h1>
+                </div>
+            </div>
+        </section>
+        <div class="digital-clock" id="jam"></div>
+        <footer>
+            <p>&copy; By. Fendi EO 2023-2024</p>
+        </footer>
+        <script>
+            
+        </script>
+    </body>
+    </html>

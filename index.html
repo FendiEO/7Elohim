@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="foto/Logo_7Elohim.jpg" type="image/jpeg">
+    <title>Memuat Halaman Utama</title>
+</head>
+<body>
+    <!-- Sertakan Font Awesome -->
+    <script src="https://kit.fontawesome.com/2e65e9437c.js" crossorigin="anonymous"></script>
+
+    <!-- Script JavaScript Anda -->
+    <script>
+        // Deteksi perangkat pengguna
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            // Pengguna menggunakan perangkat mobile, alihkan ke halaman mobile
+            console.log("Pengguna adalah perangkat mobile."); // Pesan debug
+            window.location.href = "Default_Mobile.html"; // Ganti dengan halaman mobile yang sesuai
+        } else {
+            // Pengguna menggunakan desktop, alihkan ke halaman default untuk desktop
+            console.log("Pengguna adalah desktop."); // Pesan debug
+            window.location.href = "Default_Desktop.html"; // Ganti dengan halaman desktop default
+        } 
+    </script>
+</body>
+</html>

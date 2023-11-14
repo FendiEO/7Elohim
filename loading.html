@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="foto/Logo_7Elohim.jpg" type="image/jpeg">
+    <title>7Elohim Organizer & Planner</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            background-color: rgba(172, 170, 170, 0.897);
+            overflow: hidden;
+        }
+
+        .header {
+            top: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            z-index: 999;
+        }
+
+        @keyframes scaleAnimation {
+            0% {
+                transform: scale(1); /* Ukuran awal */
+            }
+            50% {
+                transform: scale(1.3); /* Ukuran maksimum */
+            }
+            100% {
+                transform: scale(1); /* Kembali ke ukuran awal */
+            }
+        }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+            margin-left: 20px;
+            margin-top: 20px; 
+            animation: scaleAnimation 2s infinite; /* Ubah durasi atau properti animasi sesuai kebutuhan Anda */
+        }
+
+        .logo1 {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            margin-left: -230px;
+            margin-top: 270px;
+            animation: scaleAnimation 2s infinite; /* Ubah durasi atau properti animasi sesuai kebutuhan Anda */
+        }
+
+        h1 {
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            right: 10%;
+            font-family:"lato";
+            font-size: 50px;
+            color: rgb(8, 142, 231);
+            text-align: center;
+            text-shadow: 6px 6px 3px#252525;
+        }
+
+        h2 {
+            position: absolute;
+            top: 25%;
+            left: 10%;
+            right: 10%;
+            color: rgb(8, 142, 231);
+            font-size: 30px;
+            font-family: "lato";
+            text-align: center;
+        }
+
+        @keyframes blink {
+            0% {
+                color: rgb(5, 245, 153);
+                opacity: 1;
+            }
+            50% {
+                color: rgb(5, 245, 5);
+                opacity: 0;
+            }
+            100% {
+                color: rgb(161, 245, 5);
+                opacity: 1;
+            }
+        }
+
+        h3 {
+            position: absolute;
+            top: 80%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: "lato"; /* Tambahkan spasi setelah titik koma */
+            font-size: 20px;
+            text-align: center;
+            color: rgb(5, 245, 153); /* Ubah warna teks ke putih atau warna yang kontras dengan latar belakang */
+            animation: blink 1s infinite;
+            /* Hapus properti background dan -webkit-background-clip karena itu bertentangan dengan color: transparent */
+        }
+       
+        .border-animation {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 0;
+            animation: gradient 4s linear infinite;
+            border: 10px solid gold;
+        }
+
+        @keyframes gradient {
+            0% {
+                border-color: gold;
+            }
+            25% {
+                border-color: silver;
+            }
+            50% {
+                border-color: yellow;
+            }
+            75% {
+                border-color: blue;
+            }
+            100% {
+                border-color: gold;
+            }
+        }
+
+        /* CSS untuk video latar belakang */
+        video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1; /* Menempatkan video di belakang elemen-elemen lain */
+        }
+         
+        .line-container {
+            position: absolute;
+            width: 100px;
+            height: 15px;
+            top: 85%;
+            width: 95%;
+            background-color: #3498db;
+            overflow: hidden;
+        }
+
+        .line-progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: #f30909;
+            animation: progress 5s linear forwards;
+        }
+
+        @keyframes progress {
+            0% { width: 0; }
+            25% { width: 25%; }
+            50% { width: 50%; }
+            75% { width: 75%; }
+            100% { width: 100%; }
+        }
+
+        .percentage {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: "lato";
+            color: rgb(190, 230, 11);
+            font-size: 13px;
+        }
+        
+        .digital-clock {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            background-color: rgba(248, 6, 6, 0.897);
+            color: rgb(241, 245, 10);
+            padding: 5px 5px;
+            border-radius: 5px;
+            font-size: 25px;
+            min-width: 100px;
+            text-align: center;
+            white-space: nowrap;
+            font-family: "lato";
+        }
+
+        footer {
+            background-color: transparent;
+            color: rgb(69, 24, 231);
+            text-align: center;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 93%;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: -1;
+        }
+
+        /* Responsiveness for screens with a max width of 768px */
+        @media screen and (max-width: 768px){
+        h1 {
+            font-size: 1.5em;
+            top: 2%;
+            }
+
+        h2 {
+            font-size: 1.2em;
+            top: 15%;
+        }
+
+        h3 {
+            font-size: 1em;
+            top: 75%;
+        }
+
+        .line-container {
+            top: 85%;
+            width: 95%;
+        }
+
+        .digital-clock {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            background-color: rgba(248, 6, 6, 0.897);
+            color: rgb(241, 245, 10);
+            padding: 5px 5px;
+            border-radius: 5px;
+            font-size: 12px;
+            min-width: 25px;
+            text-align: center;
+            white-space: nowrap;
+            font-family: "lato";
+        }
+        footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: transparent;
+            color: rgb(69, 24, 231);
+            text-align: center;
+            padding: 0;
+            font-family: "lato";
+            font-size: 15px;
+        }
+    }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <img src="foto/Logo_7Elohim.jpg" alt="7Elohim Logo" class="logo">
+    </header>
+    <img src="foto/Logo_7Elohim.jpg" alt="7Elohim Logo" class="logo1">
+    <h1>7Elohim</h1>
+    <h2>Selamat datang di 7Elohim Organizer & Planner<br>
+        Jelajahi dunia Wedding<br>
+        Kami akan membantu Prosesi Liputan Pagi hingga Resepsi Pernikahan<br>
+        Sambut Kesempatan baru bersama Kami<br>
+        Mari Temukan kecocokan Wedding Package anda Bersama Kami<br>
+        Kami menawarkan berbagai Paket Pernikahan untuk Anda<br>
+        Dapatkan Ide, Tips, dan Solusi di Sini<br>
+        Kami hadir untuk memudahkan dalam Perencanaan Dekorasi dan Susunan Acara Anda<br>
+    </h2>
+    <h3>Sedang Memuat</h3>
+    <div class="digital-clock" id="jam"></div>
+    <div class="border-animation"></div>
+    <video autoplay loop muted>
+        <source src="Vidio/Vidio-Weeding-Backgorund_1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="line-container">
+        <div class="line-progress"></div>
+        <div class="percentage">1%</div>
+    </div>
+    <footer>
+        <p>&copy; By. Fendi EO 2023-2024</p>
+    </footer>
+</body>
+<script>
+    // Dapatkan elemen persentase
+    var percentageElement = document.querySelector('.percentage');
+    var lineProgress = document.querySelector('.line-progress');
+
+    // Tambahkan event listener untuk event animationend
+    lineProgress.addEventListener('animationend', function() {
+        // Saat akhir animasi, ubah persentase menjadi 100%
+        percentageElement.innerHTML = '100%';
+
+        // Simulasikan proses loading (gunakan setTimeout untuk simulasi)
+        setTimeout(function() {
+            window.location.href = "index.html"; // Ganti dengan halaman default Anda
+        }, 100); // Ganti dengan waktu loading yang diinginkan (dalam milidetik)
+    });
+
+    // Fungsi untuk memantau nilai width animasi dan menampilkan persentase yang sesuai
+    function updatePercentage() {
+        var progress = (lineProgress.offsetWidth / lineProgress.parentNode.offsetWidth) * 100;
+        percentageElement.innerHTML = Math.round(progress) + '%';
+    }
+
+    // Panggil fungsi updatePercentage pada interval untuk memantau nilai width animasi
+    setInterval(updatePercentage, 50);
+
+    // Pastikan dokumen HTML telah dimuat sepenuhnya
+    document.addEventListener("DOMContentLoaded", function() {
+    function updateDigitalClock() {
+        const digitalClock = document.getElementById('jam');
+        if (!digitalClock) return; // Periksa apakah elemen ada
+        const now = new Date();
+        const hours = now.getHours().toString().padStart(2, '0');
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+        const seconds = now.getSeconds().toString().padStart(2, '0');
+        digitalClock.textContent = `${hours}:${minutes}:${seconds}`;
+    }
+
+    // Update the clock immediately and every second
+    updateDigitalClock();
+    setInterval(updateDigitalClock, 1000);
+});
+</script>
+</html>

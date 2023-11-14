@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7Elohim Organizer & Planner</title>
+    <link rel="icon" href="foto/Logo_7Elohim.jpg" type="image/jpg">
+    <style>
+        /* Reset default browser styles */
+        body, ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Basic styles */
+        body {
+            font-family: Arial, sans-serif;
+            background: #007bff;
+            color: white;
+        }
+
+        .border-animation {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: -1;
+            animation: gradient 4s linear infinite;
+            border: 10px solid gold;
+        }
+
+        @keyframes gradient {
+            0% {
+                border-color: gold;
+            }
+            25% {
+                border-color: silver;
+            }
+            50% {
+                border-color: yellow;
+            }
+            75% {
+                border-color: blue;
+            }
+            100% {
+                border-color: gold;
+            }
+
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            z-index: 999;
+        }
+
+        .menu a {
+                text-decoration: rgb(178, 241, 5);
+                color: rgb(248, 9, 9);
+                transition: color 0.3s;
+            }
+
+        .menu a:hover {
+            color: rgb(250, 5, 5);
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(247, 1, 1, 0.918);
+        }
+
+        .menu-icon {
+            display: none;
+            cursor: pointer;
+        }
+
+        .menu {
+            list-style: none;
+            display: flex;
+        }
+
+        .menu li {
+            margin-right: 20px;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: rgb(205, 240, 8);
+        }
+
+        .video-container {
+            position: absolute;
+            top: 70px;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .video {
+            flex: 0 0 calc(50% - 50px);
+            text-align: center;
+            margin: 6px;
+            transition: transform 0.5s;
+            padding-left: 6px;
+        }
+
+        .video:hover {
+            transform: scale(1.1);
+        }
+
+        .video iframe {
+            width: 100%;
+        }
+
+        .video h2 {
+            margin-top: 8px;
+            padding: 1px;
+            color: red;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* Responsiveness for screens with a max width of 768px */
+        @media screen and (max-width: 768px) {
+            .menu {
+                    display: none;
+                }
+
+                .menu.active {
+                    display: flex;
+                    flex-direction: column;
+                    position: absolute;
+                    top: 60px;
+                    right: 0;
+                    background-color: transparent;
+                    z-index: 2;
+                }
+
+                .menu li {
+                    margin-right: 10px;
+                    margin-bottom: 10px;
+                    text-align: right;
+                }
+
+                .menu-icon {
+                    display: block;
+                    cursor: pointer;
+                    font-size: 30px;
+                    padding: 20px;
+                }
+            }
+
+            .hover-effect a {
+                text-decoration: none;
+                color: #dbdf08;
+                transition: transform 0.3s, box-shadow 0.3s;
+            }
+
+            .hover-effect a:hover {
+                color: rgb(248, 8, 8);
+                transform: scale(1.05);
+                box-shadow: 0 0 10px rgba(248, 5, 5, 0.5);
+            }
+
+        .video-container {
+            justify-content: flex-start;
+        }
+        .video {
+            flex: 0 0 calc(20% - 20px);
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: transparent;
+            color: rgb(243, 2, 2);
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .logo {
+            width: 50px;
+            margin-right: 20px;
+            padding: 15px;
+            transition: transform 0.5s;
+        }
+
+        .logo:hover {
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="border-animation"></div>
+    <header>
+        <img src="foto/Logo_7Elohim.jpg" alt="7Elohim Logo" class="logo">
+        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div> <!-- Tambahkan di sini -->
+        <ul class="menu">
+            <li><a href="Default_Mobile.html">Beranda</a></li>
+            <li><a href="Gallery_Mobile.html">Galeri</a></li>
+            <li><a href="Venue&Decoration_Mobile.html">Venue & Decoration</a></li>
+            <li><a href="Testimoni_Mobile.html">Testimoni</a></li>
+            <li><a href="Kontak_Mobile.html">Kontak</a></li>
+        </ul>
+    </header>    
+
+    <section>
+        <div class="video-container">
+            <div class="video">
+                <iframe src="Vidio/Testimoni Andri dan Debora.mp4" allowfullscreen title="Video testimoni Ko Andri & Ci Debora"></iframe>
+                <h2>Ko Andri & Ci Debora</h2>
+            </div>
+            <div class="video">
+                <iframe src="Vidio/Testimoni Kelvin dan Yovita.mp4" allowfullscreen title="Video testimoni Ko Kelvin & Ci Debora"></iframe>
+                <h2>Ko Kelvin & Ci Yovita</h2>
+            </div>
+            <div class="video">
+                <iframe src="Vidio/Testimoni Budi dan Octamia.mp4" allowfullscreen title="Video testimoni Ko Budi & Ci Octamia"></iframe>
+                <h2>Ko Budi & Ci Octamia</h2>
+            </div>
+            <div class="video">
+                <iframe src="Vidio/Testimoni Donovan dan Linda.mp4" allowfullscreen title="Video testimoni Ko Donovan & Ci Linda"></iframe>
+                <h2>Ko Donovan & Ci Linda</h2>
+            </div>
+            <div class="video">
+                <iframe src="Vidio/Testimoni Ricky dan Santy.mp4" allowfullscreen title="Video testimoni Ko Ricky & Ci Santi"></iframe>
+                <h2>Ko Ricky & Ci Santi</h2>
+            </div>
+            <div class="video">
+                <iframe src="Vidio/Testimoni Ricky dan Santy.mp4" allowfullscreen title="Video testimoni Ko Ricky & Ci Santi"></iframe>
+                <h2>Ko Ricky & Ci Santi</h2>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; Hak Cipta By. Fendi EO 2023-2024</p>
+    </footer>
+
+    <script>
+        // Function to toggle the mobile menu
+        function toggleMenu() {
+            var menu = document.querySelector('.menu');
+            menu.classList.toggle('active');
+            
+            // Menambahkan event listener untuk menutup menu saat klik di luar menu
+            if (menu.classList.contains('active')) {
+                document.addEventListener('click', closeMenu);
+            } else {
+                document.removeEventListener('click', closeMenu);
+            }
+        }
+        
+        // Function untuk menutup menu
+        function closeMenu(event) {
+            var menu = document.querySelector('.menu');
+            if (!event.target.matches('.menu') && !event.target.matches('.menu-icon')) {
+                menu.classList.remove('active');
+                document.removeEventListener('click', closeMenu);
+            }
+        }
+    </script>
+</body>
+</html>

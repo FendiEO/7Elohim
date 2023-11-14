@@ -1,0 +1,566 @@
+:root {
+    --background: #06a3f1;
+    --navbar-width: 190px;
+    --navbar-width-min: 80px;
+    --navbar-dark-primary: #0d57c7;
+    --navbar-dark-secondary: #caf508;
+    --navbar-light-primary: rgb(202, 236, 11);
+    --navbar-light-secondary: #c6f106;
+}
+
+html, body {
+    margin: 0;
+    background-color: transparent;
+    background-size: cover;
+}
+
+/* CSS untuk video latar belakang */
+    video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1; /* Menempatkan video di belakang elemen-elemen lain */
+}
+
+.border-animation {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    animation: gradient 4s linear infinite;
+    border: 10px solid gold;
+}
+
+@keyframes gradient {
+0% {
+    border-color: gold;
+}
+25% {
+    border-color: silver;
+}
+50% {
+    border-color: yellow;
+}
+75% {
+    border-color: blue;
+}
+100% {
+    border-color: gold;
+}
+}
+
+#nav-toggle:checked ~ #nav-header {
+width: calc(var(--navbar-width-min) - 10px);
+}
+#nav-toggle:checked ~ #nav-content, #nav-toggle:checked ~ #nav-footer {
+width: var(--navbar-width-min);
+}
+#nav-toggle:checked ~ #nav-header #nav-title {
+opacity: 0;
+pointer-events: none;
+transition: opacity 0.1s;
+}
+#nav-toggle:checked ~ #nav-header label[for=nav-toggle] {
+left: calc(50% - 8px);
+transform: translate(-50%);
+}
+#nav-toggle:checked ~ #nav-header #nav-toggle-burger {
+background: var(--navbar-light-primary);
+}
+#nav-toggle:checked ~ #nav-header #nav-toggle-burger:before, #nav-toggle:checked ~ #nav-header #nav-toggle-burger::after {
+width: 16px;
+background: var(--navbar-light-secondary);
+transform: translate(0, 0) rotate(0deg);
+}
+#nav-toggle:checked ~ #nav-content .nav-button span {
+opacity: 0;
+transition: opacity 0.1s;
+}
+#nav-toggle:checked ~ #nav-content .nav-button .fas {
+min-width: calc(100% - 16px);
+}
+#nav-toggle:checked ~ #nav-footer #nav-footer-avatar {
+margin-left: 0;
+left: 50%;
+transform: translate(-50%);
+}
+#nav-toggle:checked ~ #nav-footer #nav-footer-titlebox, #nav-toggle:checked ~ #nav-footer label[for=nav-footer-toggle] {
+opacity: 0;
+transition: opacity 0.1s;
+pointer-events: none;
+}
+
+#nav-bar {
+position: absolute;
+left: 1vw;
+top: 1vw;
+height: calc(100% - 2vw);
+background: var(--navbar-dark-primary);
+border-radius: 10px;
+display: flex;
+flex-direction: column;
+color: var(--navbar-light-secondary);
+font-family: "lato";
+overflow: hidden;
+user-select: none;
+}
+
+#nav-bar hr {
+margin: 0;
+position: relative;
+left: 5px;
+width: calc(100% - 33px);
+border: none;
+border-top: solid 2px var(--navbar-dark-secondary);
+}
+
+#nav-bar a {
+color: inherit;
+text-decoration: inherit;
+}
+
+#nav-bar input[type=checkbox] {
+display: none;
+}
+
+#nav-header {
+position: relative;
+width: var(--navbar-width);
+left: 2px;
+width: calc(var(--navbar-width) - 10px);
+min-height: 40px;
+background: transparent;
+border-radius: 16px;
+z-index: 2;
+display: flex;
+align-items: center;
+justify-content: space-between; /* Menyesuaikan jarak antara logo dan judul navigasi */
+transition: width 1s;
+}
+
+.logo-title-container {
+display: flex;
+align-items: center;
+gap: 10px; /* Menambahkan jarak horizontal antara logo dan judul */
+}
+
+/* Style the logo image and add a 3D effect when hovering over the logo */
+@keyframes scaleAnimation {
+    0% {
+        transform: scale(1); /* Ukuran awal */
+    }
+    50% {
+        transform: scale(1.3); /* Ukuran maksimum */
+    }
+    100% {
+        transform: scale(1); /* Kembali ke ukuran awal */
+    }
+}
+
+.logo {
+width: 30px;
+height: 30px;
+margin: 10px; 
+animation: scaleAnimation 2s infinite;
+}
+
+#nav-header hr {
+position: absolute;
+bottom: 0;
+}
+
+#nav-title {
+font-size: 1.3rem;
+transition: opacity 1s;
+font-family: "lato";
+}
+
+label[for=nav-toggle] {
+position: absolute;
+right: 0;
+width: 1rem;
+height: 90%;
+display: flex;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+}
+
+#nav-toggle-burger {
+position: relative;
+width: 10px;
+height: 1px;
+background: var(--navbar-dark-primary);
+border-radius: 99px;
+transition: 0.2s;
+}
+
+#nav-toggle-burger:before, #nav-toggle-burger:after {
+content: "";
+position: absolute;
+top: -6px;
+width: 10px;
+height: 2px;
+background: var(--navbar-light-primary);
+border-radius: 99px;
+transform: translate(2px, 8px) rotate(30deg);
+transition: 0.2s;
+}
+
+#nav-toggle-burger:after {
+top: 6px;
+transform: translate(2px, -8px) rotate(-30deg);
+}
+
+#nav-content {
+margin: -16px 0;
+padding: 16px 0;
+position: relative;
+flex: 1;
+width: var(--navbar-width);
+background: var(--navbar-dark-primary);
+box-shadow: 0 0 0 10px var(--navbar-dark-primary);
+direction: rtl;
+overflow-x: hidden;
+transition: width 0.2s;
+}
+
+#nav-content::-webkit-scrollbar {
+width: 5px;
+height: 5px;
+}
+#nav-content::-webkit-scrollbar-thumb {
+border-radius: 99px;
+background-color: #D62929;
+}
+
+#nav-content-highlight {
+position: absolute;
+left: 16px;
+top: -70px;
+width: calc(100% - 16px);
+height: 54px;
+background: var(--background);
+background-attachment: fixed;
+border-radius: 16px 0 0 16px;
+transition: top 0.2s;
+}
+#nav-content-highlight:before, #nav-content-highlight:after {
+content: "";
+position: absolute;
+right: 0;
+bottom: 100%;
+width: 32px;
+height: 32px;
+border-radius: 50%;
+box-shadow: 16px 16px var(--background);
+}
+#nav-content-highlight:after {
+top: 100%;
+box-shadow: 16px -16px var(--background);
+}
+
+.nav-button {
+position: relative;
+margin-left: 16px;
+margin-bottom: auto;
+height: 54px;
+display: flex;
+align-items: center;
+color: var(--navbar-light-secondary);
+direction: ltr;
+cursor: pointer;
+z-index: 1;
+transition: color 0.2s;
+}
+
+.nav-button span {
+transition: opacity 1s;
+}
+.nav-button .fas {
+transition: min-width 0.2s;
+}
+.nav-button:nth-of-type(1):hover {
+color: var(--navbar-dark-primary);
+}
+.nav-button:nth-of-type(1):hover ~ #nav-content-highlight {
+top: 16px;
+}
+.nav-button:nth-of-type(2):hover {
+color: var(--navbar-dark-primary);
+}
+.nav-button:nth-of-type(2):hover ~ #nav-content-highlight {
+top: 70px;
+}
+.nav-button:nth-of-type(3):hover {
+color: var(--navbar-dark-primary);
+}
+.nav-button:nth-of-type(3):hover ~ #nav-content-highlight {
+top: 124px;
+}
+.nav-button:nth-of-type(4):hover {
+color: var(--navbar-dark-primary);
+}
+.nav-button:nth-of-type(4):hover ~ #nav-content-highlight {
+top: 178px;
+}
+.nav-button:nth-of-type(5):hover {
+color: var(--navbar-dark-primary);
+}
+.nav-button:nth-of-type(5):hover ~ #nav-content-highlight {
+top: 232px;
+}
+.nav-button:nth-of-type(6):hover {
+color: var(--navbar-dark-primary);
+}
+.nav-button:nth-of-type(6):hover ~ #nav-content-highlight {
+top: 286px;
+}
+.nav-button:nth-of-type(7):hover {
+color: var(--navbar-dark-primary);
+}
+.nav-button:nth-of-type(7):hover ~ #nav-content-highlight {
+top: 340px;
+}
+.nav-button:nth-of-type(8):hover {
+color: var(--navbar-dark-primary);
+}
+.nav-button:nth-of-type(8):hover ~ #nav-content-highlight {
+top: 394px;
+}
+
+#nav-bar .fas {
+min-width: 3rem;
+text-align: center;
+}
+
+/* Style the f  rame image and add a 3D effect when hovering over the frame */
+@keyframes scaleAnimation1 {
+0% {
+    transform: scale(1); /* Ukuran awal */
+}
+50% {
+    transform: scale(1.1); /* Ukuran maksimum */
+}
+100% {
+    transform: scale(1); /* Kembali ke ukuran awal */
+}
+}
+
+.small-image-container {
+width: 200px;
+height: 300px;
+margin: 30px;
+left: 40%;
+background-color: transparent;
+background-image: url('./foto/Wedding.jpg');
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+position: relative;
+box-shadow: 8px 8px 1px rgb(39, 37, 37);
+animation: scaleAnimation1 3s infinite; /* Ubah durasi atau properti animasi sesuai kebutuhan Anda */
+}
+
+.small-image {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: 100%;
+height: 100%;
+overflow: hidden;
+}
+
+.text-container {
+font-size: 16px;
+text-align: center;
+font-family: "lato";
+color: rgb(253, 5, 5);
+margin: 5px;
+}
+
+footer {
+font-size: 1.2vw; /* Gunakan viewport width untuk ukuran font yang lebih fleksibel */
+position: absolute;
+bottom: 0;
+width: 100%;
+color: rgb(253, 5, 5);
+text-align: center;
+font-family: "lato";
+}
+
+.digital-clock {
+position: fixed;
+bottom: 10px;
+right: 10px;
+background-color: rgba(248, 6, 6, 0.897);
+color: rgb(34, 10, 245);
+padding: 5px 5px;
+border-radius: 5px;
+font-size: 25px;
+min-width: 100px;
+text-align: center;
+white-space: nowrap;
+font-family: "lato";
+}
+
+/* Gunakan media query untuk mengatur responsivitas pada layar kecil */
+@media screen and (max-width: 768px) {
+/* Menyembunyikan teks pada elemen span di dalam .nav-button */
+.nav-button span {
+    display: none;
+}
+/* Menyembunyikan teks pada judul menu */
+#nav-title {
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+
+/* Menyesuaikan tampilan ikon menu */
+.logo {
+    display: none; /* Menyembunyikan logo */
+}
+label[for=nav-toggle] {
+    /* Menambahkan sesuatu seperti tanda panah untuk menandakan menu */
+    content: "\f0c9"; /* Unicode untuk ikon menu Font Awesome */
+    font-family: "Font Awesome 5 Free"; /* Sesuaikan dengan nama font family yang digunakan */
+    font-weight: 900;
+    font-size: 1.5rem;
+}
+#nav-header {
+    width: 100%; /* Lebar header 100% saat layar kecil */
+}
+#nav-bar {
+    height: auto; /* Ubah tinggi navbar menjadi auto agar menyesuaikan konten */
+}
+.logo-title-container {
+    gap: 5px; /* Sesuaikan jarak antara logo dan judul untuk layar kecil */
+}
+.logo {
+    width: 20px; /* Ubah ukuran logo untuk layar kecil */
+    height: 20px;
+}
+#nav-content {
+    width: 100%; /* Lebar konten navbar 100% saat layar kecil */
+}
+.nav-button {
+    height: 40px; /* Ubah tinggi button navigasi untuk layar kecil */
+}
+.nav-button span {
+    opacity: 1; /* Tampilkan teks pada tombol navigasi */
+}
+.nav-button .fas {
+    min-width: 40px; /* Sesuaikan lebar ikon navigasi untuk layar kecil */
+}
+/* Atur ulang perubahan yang diperlukan untuk desain responsif */
+#nav-content-highlight {
+    position: absolute;
+    left: 20px;
+    right: 0;
+    top: -35px;
+    height: 10px;
+    background: var(--background);
+    background-attachment: fixed;
+    border-radius: 10px 0 0 10px;
+    transition: top 0.2s, width 0.2s, left 0.2s; /* Ditambahkan transition untuk properti yang diubah */
+}
+
+#nav-content-highlight:before,
+#nav-content-highlight:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 100%;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    box-shadow: 16px 16px var(--background);
+}
+
+#nav-content-highlight:after {
+    top: 100%;
+    box-shadow: 10px -10px var(--background);
+}
+
+.nav-button {
+    position: relative;
+    margin-left: 16px;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    color: var(--navbar-light-secondary);
+    direction: ltr;
+    cursor: pointer;
+    z-index: 1;
+    transition: color 0.2s;
+}
+
+.nav-button:hover ~ #nav-content-highlight {
+    top: calc(var(--button-index) * 54px); /* Menyesuaikan posisi berdasarkan urutan tombol */
+}
+
+/* Tambahkan variabel CSS untuk mengatur posisi tombol */
+:root {
+    --button-index: 0;
+}
+
+/* ... (Tetapkan perubahan yang diperlukan untuk elemen lainnya) ... */
+.small-image-container {
+    width: 170px;
+    height: 270px;
+    margin: 5px;
+    top: 30px;
+    background-color: transparent;
+    background-image: url('wedding.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    box-shadow: 4px 4px 0.5px rgb(39, 37, 37);
+    animation: scaleAnimation1 3s infinite; /* Ubah durasi atau properti animasi sesuai kebutuhan Anda */
+}
+
+.small-image {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.text-container {
+    padding-top: 80px;
+    font-size: 10px;
+    text-align: center;
+    font-family: "lato";
+}
+    
+.digital-clock {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    background-color: rgba(248, 6, 6, 0.897);
+    color: rgb(45, 10, 245);
+    padding: 5px 5px;
+    border-radius: 5px;
+    font-size: 12px;
+    min-width: 25px;
+    text-align: center;
+    white-space: nowrap;
+    font-family: "lato";
+}
+
+footer {
+    font-size: 2.5vw; /* Gunakan viewport width untuk ukuran font yang lebih fleksibel */
+    position: absolute;
+    bottom: -2px;
+    width: 100%;
+    color: rgb(253, 5, 5);
+    text-align: center;
+    font-family: "lato";
+    }
+}
